@@ -3,11 +3,9 @@
 <head lang="en">
  <title>pledgr</title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="styles/style.css" />
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="app/app.js"></script>
@@ -17,21 +15,23 @@
   <script src="app/signin/signin.js"></script>
   <script src="app/factories/factories.js"></script>
 </head>
-<body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-4">
-        <h1 class="logo">pledgr</h1>
-      </div>
-      <div class="col-sm-8 nav">
-        <a ui-sref="signin" class="btn btn-default navbar-btn">Sign in</a>
-      </div>
-    </div>
-    <!-- the div where all templates will be loaded -->
-    <div ui-view class="row uiContainer">
+<body ng-controller="mainApp" class="{{state.current.name}}" >
 
+  <header class="main-header">
+    <div class="logo">
+      <h1>pledgr</h1>
     </div>
-  </div>
+    
+    <button ui-sref="signin">Sign in</button>
+
+  </header>
+
+  <div class="content-area">
+
+    <!-- Templates will load here -->
+    <div ui-view class="uiContainer"></div>
+
+  </div> <!-- .content-area -->
 
   <script src="bower_components/highcharts/highcharts.js"></script>
 </body>

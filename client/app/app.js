@@ -33,4 +33,9 @@ angular.module('pledgr', [
     });
 
     // $httpProvider.interceptors.push('AttachTokens');
+}).controller('mainApp', function($scope, $state){
+
+  $scope.state = $state;
+
+
 });
