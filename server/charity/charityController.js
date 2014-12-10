@@ -43,7 +43,10 @@ module.exports = {
   },
 
   sendCategories: function(req, res) {
-    res.send();
+    Charity.find().distinct('category', function(err, categories) {
+      res.json(categories);
+
+    })
   },
 
   sendSubCategories: function(req, res) {
