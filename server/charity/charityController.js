@@ -32,14 +32,22 @@ module.exports = {
       category: req.body.category,
       subCategory: req.body.subCategory
     };
-    var newCharity = new Charity(charity);
-    newCharity.save(function(error) {
-      if (error) {
-        console.log(error);
+    
+    Charity.findOne({name: charity.name}).exec(function(err, found) {
+      if (found) {
+        res.send(200, found);
       } else {
-        res.send();
+        var newCharity = new Charity(charity);
+        newCharity.save(function(error) {
+          if (error) {
+            res.send(500, error);
+          } else {
+            res.send(201, newCharity);
+          }
+        });
       }
     });
+    
   },
 
   sendCategories: function(req, res) {
