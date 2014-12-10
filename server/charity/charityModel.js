@@ -11,7 +11,7 @@ var CharitySchema = new mongoose.Schema({
   state: String,
   zip: String,
   email: String,
-  phone: Number,
+  phone: String,
   rating: String,
   metrics: {
     'Program Expenses': String,
