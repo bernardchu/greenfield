@@ -2,8 +2,8 @@ angular.module('pledgr.signin', [])
 
 .controller('SignInController', function($scope, $window, Auth) {
   $scope.user = {
-    username: 'someone@example.com',
-    password: 'Password'
+    username: '',
+    password: ''
   };
 
   $scope.signin = function() {
