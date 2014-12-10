@@ -8,6 +8,7 @@ var app = express();
 //connects mongoose to the 'pledgr' database;
 //the 'pledgr' db is created automatically at connection
 
+
 var mongoURI = process.env.MONGO_URI || 'mongodb://localhost/pledgr'; //process.env.MONGO_URI || 
 
 mongoose.connect(mongoURI);

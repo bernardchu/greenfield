@@ -53,10 +53,9 @@
         <input type="checkbox" name="preference" ng-model="user.religion">Religion<br>
       </fieldset>
       <fieldset class="form-section">
+
         <!-- local area preference -->
-        <label for="local">Local charity preference</label>
-        <input type="checkbox" name="local" ng-model="user.local"><br>
-      </div>
+      </fieldset>
       <fieldset class="phoneContainer form-section">
         <!-- phone number input form -->
         <h3>Verify your phone number</h3>
@@ -80,16 +79,30 @@
         <!-- user donation amount form -->
         <h3>Annual Pledge Amount</h3>
         <p>Please provide your annual pledge amount</p>
-        <labor for="pledge">Pledge Amount</label>
+        <label for="pledge">Pledge Amount</label>
+        <div class="nameContainer">
+          <!-- firstname input form -->
+          <label for="firstName">Name</label>
+          <input type="text" name="firstName" ng-model="user.first" ng-minlength="2" ng-maxlength="15" required>
+          <!-- firstname validation -->
+          <p ng-show="signupForm.firtname.$error.minlength">Name too short</p>
+          <p ng-show="signupForm.firtname.$error.maxlength">Name too long</p>
+          <!-- lastname input form -->
+          <input type="text" name="lastName" ng-model="user.last" ng-minlength="2" ng-maxlength="15" required>
+          <!-- lastname validation -->
+          <p ng-show="signupForm.lastName.$error.minlength">Name too short</p>
+          <p ng-show="signupForm.lastName.$error.maxlength">Name too long</p>
+        </div>
         <input type="number" ng-model="user.pledge" name="pledge" required>
         <span class="form-tip">You have donated <span id="currency-default">{{user.pledge | currency }}</span>! </p>
         <span class="form-tip form-error" ng-show="signupForm.pledge.$invalid || signupForm.pledge.$pristine">Please enter amount</span>
       </fieldset>
       <div id="createAccount">
+
         <!-- create account submit button-->
         <p>Click <strong>Create account</strong> to sign up today!</p>
-        <button type="submit" ng-disabled='signupForm.$invalid'>Create account</button>
-      </div>
+        <button type="submit" ng-disabled='signupForm.$invalid' class="btn btn-primary">Create account</button>
+    </div>
     </form>
   </div>
 </div>
