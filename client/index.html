@@ -3,11 +3,10 @@
 <head lang="en">
  <title>pledgr</title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  
+  <!-- Scripts -->
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="app/app.js"></script>
@@ -16,22 +15,31 @@
   <script src="app/charities/charities.js"></script>
   <script src="app/signin/signin.js"></script>
   <script src="app/factories/factories.js"></script>
-</head>
-<body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-4">
-        <h1 class="logo">pledgr</h1>
-      </div>
-      <div class="col-sm-8 nav">
-        <a ui-sref="signin" class="btn btn-default navbar-btn">Sign in</a>
-      </div>
-    </div>
-    <!-- the div where all templates will be loaded -->
-    <div ui-view class="row uiContainer">
+  <script src="app/ui/scripts.js"></script>
+  <!-- End Scripts -->
 
-    </div>
-  </div>
+  <!-- CSS / Fonts -->
+  <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,400italic|Poiret+One|Slabo+27px' rel='stylesheet' type='text/css'>
+
+
+</head>
+<body ng-controller="mainApp" class="{{state.current.name}}" >
+
+  <header class="main-header sticky">
+    <div class="logo">
+      <h1 ui-sref="home">pledgr</h1>
+    </div> <!-- .logo -->
+    
+    <div class="login-controls">
+      <button ui-sref="signin">Sign in</button>
+    </div> <!-- .login-controls -->
+  </header>
+
+  <div class="content-area">
+    <!-- Templates will load here -->
+    <div ui-view class="uiContainer"></div>
+  </div> <!-- .content-area -->
 
   <script src="bower_components/highcharts/highcharts.js"></script>
 </body>
