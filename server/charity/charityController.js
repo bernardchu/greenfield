@@ -19,5 +19,46 @@ module.exports = {
         }
       }
     );
+  },
+
+  register: function(req, res) {
+    var charity = {
+      name: req.body.name,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      email: req.body.email,
+      phone: req.body.phone,
+      category: req.body.category,
+      subCategory: req.body.subCategory
+    };
+    
+    Charity.findOne({name: charity.name}).exec(function(err, found) {
+      if (found) {
+        res.send(200, found);
+      } else {
+        var newCharity = new Charity(charity);
+        newCharity.save(function(error) {
+          if (error) {
+            res.send(500, error);
+          } else {
+            res.send(201, newCharity);
+          }
+        });
+      }
+    });
+  },
+
+  sendCategories: function(req, res) {
+    Charity.find().distinct('category', function(err, categories) {
+      res.json(categories);
+    })
+  },
+
+  sendSubCategories: function(req, res) {
+    Charity.find().distinct('subCategory', function(err, subCategories) {
+      res.json(subCategories);
+    })
   }
+
 };
