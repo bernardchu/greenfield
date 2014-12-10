@@ -87,4 +87,21 @@ angular.module('pledgr.factories', [])
     getCategories: getCategories,
     getSubCategories: getSubCategories
   }
+})
+
+.factory('Charities', function($http) {
+  var register = function(data) {
+    return $http({
+      method: 'POST',
+      url: '/api/charity',
+      data: data
+    })
+    .then(function(resp) {
+      return resp.data;
+    });
+  };
+
+  return {
+    register: register
+  };
 });
