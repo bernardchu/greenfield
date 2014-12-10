@@ -1,6 +1,6 @@
 angular.module('pledgr.register', [])
 
-.controller('RegisterController', function($scope, $window, Categories) {
+.controller('RegisterController', function($scope, $window, Categories, Charities) {
   Categories.getCategories()
     .then(function(categories) {
       $scope.categories = categories;
@@ -78,7 +78,12 @@ angular.module('pledgr.register', [])
 
 
   $scope.register = function() {
-    console.log(this.charity);
+    // console.log($scope.charity);
+    Charities.register($scope.charity)
+      .then(function(res) {
+        console.log(res);
+      });
+
     // Auth.signup($scope.user)
     // .then(function(token) {
     //     $window.localStorage.setItem('token', token);
