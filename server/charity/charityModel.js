@@ -6,6 +6,8 @@ var CharitySchema = new mongoose.Schema({
   city: String,
   state: String,
   zip: String,
+  email: String,
+  phone: Number,
   rating: String,
   metrics: {
     'Program Expenses': String,
