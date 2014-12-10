@@ -1,39 +1,244 @@
-html {
-  height: 100%;
-  width: 100%;
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
 body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*********** End CSS Reset ************/
+html, body {
   height: 100%;
   width: 100%;
 }
 
-h1.logo {
-  padding: 0 0 0 20px;
-  margin-top: 10px;
+/**** Text Styling ***/
+body{
+  font-size: 16px;
+  overflow-y: hidden;
+  font-family: 'Source Sans Pro', sans-serif;
+  background: #ECF0F1;
+  /*font-family: 'Slabo 27px', serif;*/
+}
+
+h1{
+  font-size: 4.5em;
+  font-weight: 200;
+  line-height: 1.25em;
 }
 
 h2 {
-  font-size: 50px;
+  font-size: 1.75em;
+  font-weight: 100;
+  line-height: 1.25em;
+  letter-spacing: .075em;
 }
 
-.nav {
-  text-align: right;
-  padding-right: 30px;
-  padding-top: 5px;
+
+/**** UI Elements ***/
+input[type="submit"], button{
+  background: #3498db;
+  border: 1px solid #2980B9;
+  color: #fff;
+  padding: 7px 15px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  text-shadow: 1px 1px 0px rgba(150, 150, 150, 0.7);
+  -webkit-box-shadow: 1px 1px 1px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    1px 1px 1px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         1px 1px 1px 0px rgba(50, 50, 50, 0.75);
+  font-size: .875em;
+  font-weight: 200;
+  letter-spacing: .07em;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
+  label{
+    display: block;
+    margin: .75em 0; 
+  }
+
+
+  input[type="text"], input[type="email"], input[type="tel"], input[type="password"]{
+    padding: 7px 5px 8px;
+    border: 1px solid #c4c6c6;
+    border-radius: 2px;
+    width: 150px;
+  }
+
+
+  input[type="submit"]:active, button:active{
+    background: #2980b9;
+    border: 1px solid #2C3E50;
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 0px 0px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 0px 0px 0px rgba(50, 50, 50, 0.75);
+  }
+
+  input[type="submit"].btn-lg, button.btn-lg{
+    padding: 10px 20px;
+  }
+
+  input[type="checkbox"]{
+    border-radius: 0;
+  }
+
+  input[type="checkbox"]:checked + label {
+   
+  }
+
+  .form-section{
+    border: 1px solid #c4c6c6;
+    margin: 0 0 20px 0;
+    padding: 15px;
+    border-radius: 2px;
+  }
+
+  .form-tip{
+    font-size: .75em;
+    color: #969696;
+    display: block;
+    margin: 12px 0 0 0;
+  }
+
+  .form-error{
+    color: #E74C3C;
+  }
+
+/**** Page Layout ***/
+
+header.main-header{
+  width: 100%;
+  height: 68px;
+  background: #fff;
+  padding: 15px 0 0 0;
+  border-bottom: 1px solid #2C3E50;
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.7);
+  -moz-box-shadow:    0px 2px 2px 0px rgba(50, 50, 50, 0.7);
+  box-shadow:         0px 2px 2px 0px rgba(50, 50, 50, 0.7);
+}
+  .logo{
+    float: left;
+    margin: 0 0 0 15%;
+  }
+
+  .logo h1{
+    font-family: 'Poiret One', cursive;
+    font-size: 2.25em;
+    cursor: pointer;
+  }
+
+  .login-controls{
+    float: right;
+    margin: 10px 15% 0 0;
+  }
+
+  header.fixed{
+    position: fixed;
+    top:0; 
+    left:0;
+    -webkit-box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.7);
+    -moz-box-shadow:    0px 1px 1px 0px rgba(50, 50, 50, 0.7);
+    box-shadow:         0px 1px 1px 0px rgba(50, 50, 50, 0.7);
+  }
+
+
+.content-area{
+  padding: 1px 0 25px 0;
+  /*margin: 83px 0 0 0;*/
+}
+
+.view-container{
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* Home Page */
 .home {
-  height:90%;
-  display:table;
+  height:100%;
   width: 100%;
   padding: 0;
-  background: url(../img/home-bg.jpg) no-repeat center center fixed; 
+  background:  no-repeat center center fixed;
+  background-image: url(../img/bg-puppy.jpg); 
+  background-position: center 75px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
+
+  .home-signup{
+    width: 100%;
+    margin: 5% auto;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 0px 1px rgba(150, 150, 150, 1);
+  }
+
+    .home-signup h2{
+      margin: 0 0 1.5em;
+    }
+  
+
+/* Signup Page*/
+
+#signup-page{
+
+}
+
+  #signup-page h2{
+    margin: 1.5em 0 .5em;
+  }
+
+
+
+
+
+
+
+
+
+
 
 .cta {
   text-align: center;
