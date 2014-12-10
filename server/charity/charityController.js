@@ -19,5 +19,35 @@ module.exports = {
         }
       }
     );
+  },
+
+  register: function(req, res) {
+    var charity = {
+      name: req.body.name,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      email: req.body.email,
+      phone: req.body.phone,
+      category: req.body.category,
+      subCategory: req.body.subCategory
+    };
+    var newCharity = new Charity(charity);
+    newCharity.save(function(error) {
+      if (error) {
+        console.log(error);
+      } else {
+        res.send();
+      }
+    });
+  },
+
+  sendCategories: function(req, res) {
+    res.send();
+  },
+
+  sendSubCategories: function(req, res) {
+    res.send();
   }
+
 };
