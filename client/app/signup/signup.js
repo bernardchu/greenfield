@@ -72,7 +72,6 @@ angular.module('pledgr.signup', [])
 
   $scope.invalid = true;
 
-
   $scope.form = {
     selected : null,
     fieldsets : null,
@@ -96,6 +95,11 @@ angular.module('pledgr.signup', [])
       angular.element(form).fadeOut('fast', function(){
           $(this).prev('fieldset').fadeIn().addClass('active');
       }).removeClass('active');
+  $scope.formNext = function() {
+
+    console.log('Next');
+    $('#signup-form form fieldset.active').fadeOut();
+
   };
 
 
@@ -139,5 +143,11 @@ angular.module('pledgr.signup', [])
       }
     });
   };
+}).directive("formNext", function () {
+  return function (scope, element, attrs) {
+    scope.$watch(attrs.formNext, function (newVal) {
+        console.log(newVal);
+    })
+  }
 });
 
