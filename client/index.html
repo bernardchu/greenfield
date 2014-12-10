@@ -15,16 +15,18 @@
   <script src="app/charities/charities.js"></script>
   <script src="app/signin/signin.js"></script>
   <script src="app/factories/factories.js"></script>
+  <script src="app/ui/scripts.js"></script>
   <!-- End Scripts -->
 
   <!-- CSS / Fonts -->
   <link rel="stylesheet" type="text/css" href="styles/style.css" />
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,400italic|Poiret+One|Slabo+27px' rel='stylesheet' type='text/css'>
 
+
 </head>
 <body ng-controller="mainApp" class="{{state.current.name}}" >
 
-  <header class="main-header">
+  <header class="main-header sticky">
     <div class="logo">
       <h1 ui-sref="home">pledgr</h1>
     </div> <!-- .logo -->

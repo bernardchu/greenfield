@@ -84,9 +84,13 @@ input[type="submit"], button{
   outline: none;
   cursor: pointer;
   text-shadow: 1px 1px 0px rgba(150, 150, 150, 0.7);
-  -webkit-box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.75);
-  -moz-box-shadow:    1px 1px 2px 0px rgba(50, 50, 50, 0.75);
-  box-shadow:         1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+  -webkit-box-shadow: 1px 1px 1px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    1px 1px 1px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         1px 1px 1px 0px rgba(50, 50, 50, 0.75);
+  font-size: .875em;
+  font-weight: 200;
+  letter-spacing: .07em;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
   label{
@@ -96,8 +100,8 @@ input[type="submit"], button{
 
 
   input[type="text"], input[type="email"], input[type="tel"], input[type="password"]{
-    padding: 7px 5px;
-    border: 1px solid grey;
+    padding: 7px 5px 8px;
+    border: 1px solid #c4c6c6;
     border-radius: 2px;
     width: 150px;
   }
@@ -115,16 +119,26 @@ input[type="submit"], button{
     padding: 10px 20px;
   }
 
+  input[type="checkbox"]{
+    border-radius: 0;
+  }
+
+  input[type="checkbox"]:checked + label {
+   
+  }
+
   .form-section{
-    border: 1px solid black;
+    border: 1px solid #c4c6c6;
     margin: 0 0 20px 0;
     padding: 15px;
+    border-radius: 2px;
   }
 
   .form-tip{
     font-size: .75em;
     color: #969696;
     display: block;
+    margin: 12px 0 0 0;
   }
 
   .form-error{
@@ -139,6 +153,9 @@ header.main-header{
   background: #fff;
   padding: 15px 0 0 0;
   border-bottom: 1px solid #2C3E50;
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.7);
+  -moz-box-shadow:    0px 2px 2px 0px rgba(50, 50, 50, 0.7);
+  box-shadow:         0px 2px 2px 0px rgba(50, 50, 50, 0.7);
 }
   .logo{
     float: left;
@@ -156,12 +173,19 @@ header.main-header{
     margin: 10px 15% 0 0;
   }
 
+  header.fixed{
+    position: fixed;
+    top:0; 
+    left:0;
+    -webkit-box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.7);
+    -moz-box-shadow:    0px 1px 1px 0px rgba(50, 50, 50, 0.7);
+    box-shadow:         0px 1px 1px 0px rgba(50, 50, 50, 0.7);
+  }
+
 
 .content-area{
-  -webkit-box-shadow: inset 0px 2px 2px 0px rgba(50, 50, 50, 0.7);
-  -moz-box-shadow:    inset 0px 2px 2px 0px rgba(50, 50, 50, 0.7);
-  box-shadow:         inset 0px 2px 2px 0px rgba(50, 50, 50, 0.7);
-  padding: 1px 0 0 0;
+  padding: 1px 0 25px 0;
+  /*margin: 83px 0 0 0;*/
 }
 
 .view-container{
@@ -198,9 +222,13 @@ header.main-header{
 
 /* Signup Page*/
 
-#signup-form{
+#signup-page{
 
 }
+
+  #signup-page h2{
+    margin: 1.5em 0 .5em;
+  }
 
 
 

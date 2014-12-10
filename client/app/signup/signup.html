@@ -1,6 +1,6 @@
 <div id="signup-page" class="view-container">
   <div>
-    <h1>Create an account</h1>
+    <h2>Create an account</h2>
   </div>
   <div>
     <form name="signupForm" ng-submit="signup()" novalidate>
@@ -28,7 +28,7 @@
         <!-- password input form -->
         <label for="password">Create password</label>
         <input type="password" name="password" ng-model="user.password" ng-minlength="6" required>
-        <span class="form-tip">6-character minimum; case sensitive</span>
+        <span class="form-tip">6-character minimum and case sensitive</span>
         <!-- password validation -->
         <span class="form-tip form-error" ng-show="signupForm.password.$error.minlength">Password too short</span>
       </fieldset>
