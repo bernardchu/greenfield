@@ -60,4 +60,31 @@ angular.module('pledgr.factories', [])
     sendCode: sendCode,
     verifyCode: verifyCode
   };
+})
+
+.factory('Categories', function($http) {
+  var getCategories = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/charity/category'
+    })
+    .then(function(resp) {
+      return resp.data;
+    });
+  };
+
+  var getSubCategories = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/charity/subCategory'
+    })
+    .then(function(resp) {
+      return resp.data;
+    });
+  };
+
+  return {
+    getCategories: getCategories,
+    getSubCategories: getSubCategories
+  }
 });
