@@ -1,0 +1,46 @@
+<div id="signup-page" class="view-container">
+  <div>
+    <h2>Register your charity</h2>
+  </div>
+  <div>
+    <form name="registerForm" ng-submit="signup()" novalidate>
+      <fieldset class="nameContainer form-section">
+        <!-- name input form -->
+        <label for="name">Name</label>
+        <input type="text" name="name" ng-model="charity.name" ng-minlength="2" ng-maxlength="40" required>
+        <!-- name validation -->
+        <span class="form-tip form-error" ng-show="registerForm.name.$error.minlength">Name too short</span>
+        <span class="form-tip form-error" ng-show="registerForm.name.$error.maxlength">Name too long</span>
+      </fieldset>
+      <fieldset class="phoneContainer form-section">
+        <!-- phone number input form -->
+        <h3>Contact Information</h3>
+        <label for="telephone">Telephone number</label>
+        <input type="tel" name="telephone" ng-pattern="/^\(?\d{3}\)?\s?\d{3}\-?\d{4}$/" ng-model="charity.phone" required>
+        <!-- phone number validation -->
+        <span class="form-tip form-error" ng-show="registerForm.telephone.$error.pattern">Enter a valid telephone number</span>
+      </fieldset>
+      <fieldset class="preference form-section">
+        <!-- user preferences input form -->
+        <h3>Select your charity preferences </h3>
+        <label for="preference">Categories</label>
+        <input type="checkbox" name="preference" ng-model="user.animals">Animals<br>
+        <input type="checkbox" name="preference" ng-model="user.arts">Arts, Culture, Humanities<br>
+        <input type="checkbox" name="preference" ng-model="user.education">Education<br>
+        <input type="checkbox" name="preference" ng-model="user.environment">Environment<br>
+        <input type="checkbox" name="preference" ng-model="user.health">Health<br>
+        <input type="checkbox" name="preference" ng-model="user.humanService">Human Services<br>
+        <input type="checkbox" name="preference" ng-model="user.international">International<br>
+        <input type="checkbox" name="preference" ng-model="user.publicBenefit">Public Benefit<br>
+        <input type="checkbox" name="preference" ng-model="user.religion">Religion<br>
+      </fieldset>
+
+      <div id="createAccount">
+
+        <!-- create account submit button-->
+        <p>Click <strong>Create account</strong> to sign up today!</p>
+        <button type="submit" ng-disabled='registerForm.$invalid' class="btn btn-primary">Create account</button>
+    </div>
+    </form>
+  </div>
+</div>
