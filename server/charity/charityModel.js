@@ -6,7 +6,7 @@ var CharitySchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true
-  }
+  },
   city: String,
   state: String,
   zip: String,
