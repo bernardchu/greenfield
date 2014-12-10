@@ -72,6 +72,14 @@ angular.module('pledgr.signup', [])
 
   $scope.invalid = true;
 
+  $scope.formNext = function() {
+
+    console.log('Next');
+    $('#signup-form form fieldset.active').fadeOut();
+
+  };
+
+
   $scope.signup = function() {
     Auth.signup($scope.user)
     .then(function(token) {
@@ -112,4 +120,11 @@ angular.module('pledgr.signup', [])
       }
     });
   };
+}).directive("formNext", function () {
+  return function (scope, element, attrs) {
+    scope.$watch(attrs.formNext, function (newVal) {
+        console.log(newVal);
+    })
+  }
 });
+
