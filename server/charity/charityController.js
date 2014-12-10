@@ -47,7 +47,6 @@ module.exports = {
         });
       }
     });
-    
   },
 
   sendCategories: function(req, res) {
