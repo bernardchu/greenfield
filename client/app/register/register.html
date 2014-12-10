@@ -3,7 +3,7 @@
     <h2>Register your charity</h2>
   </div>
   <div>
-    <form name="registerForm" ng-submit="signup()" novalidate>
+    <form name="registerForm" ng-submit="register()" novalidate>
       <fieldset class="nameContainer form-section">
         <!-- name input form -->
         <label for="name">Name</label>
@@ -19,27 +19,46 @@
         <input type="tel" name="telephone" ng-pattern="/^\(?\d{3}\)?\s?\d{3}\-?\d{4}$/" ng-model="charity.phone" required>
         <!-- phone number validation -->
         <span class="form-tip form-error" ng-show="registerForm.telephone.$error.pattern">Enter a valid telephone number</span>
+
+        <label for="city">City</label>
+        <input type="text" name="city" ng-model="charity.city" ng-minlength="1" ng-maxlength="40" required>
+        <!-- city validation -->
+        <span class="form-tip form-error" ng-show="registerForm.city.$error.minlength">City name too short</span>
+        <span class="form-tip form-error" ng-show="registerForm.city.$error.maxlength">City name too long</span>
+
+        <label for="state">State</label>
+        <select name="state" ng-model="charity.state">
+          <option ng-repeat="state in stateAbbrevs">{{ state }}</option>
+        </select>
+
+        <label for="zip">ZIP code</label>
+        <input type="tel" name="zip" ng-pattern="/^\d{5}(?:[-\s]\d{4})?$/" ng-model="charity.zip" required>
+        <!-- phone number validation -->
+        <span class="form-tip form-error" ng-show="registerForm.zip.$error.pattern">Enter a valid ZIP code</span>
+
+        <label for="email">Email address</label>
+        <input type="email" name="email" ng-pattern="/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" ng-model="charity.email" required>
+        <!-- phone number validation -->
+        <span class="form-tip form-error" ng-show="registerForm.email.$error.pattern">Enter a valid email address</span>        
+
       </fieldset>
       <fieldset class="preference form-section">
         <!-- user preferences input form -->
-        <h3>Select your charity preferences </h3>
-        <label for="preference">Categories</label>
-        <input type="checkbox" name="preference" ng-model="user.animals">Animals<br>
-        <input type="checkbox" name="preference" ng-model="user.arts">Arts, Culture, Humanities<br>
-        <input type="checkbox" name="preference" ng-model="user.education">Education<br>
-        <input type="checkbox" name="preference" ng-model="user.environment">Environment<br>
-        <input type="checkbox" name="preference" ng-model="user.health">Health<br>
-        <input type="checkbox" name="preference" ng-model="user.humanService">Human Services<br>
-        <input type="checkbox" name="preference" ng-model="user.international">International<br>
-        <input type="checkbox" name="preference" ng-model="user.publicBenefit">Public Benefit<br>
-        <input type="checkbox" name="preference" ng-model="user.religion">Religion<br>
+        <label for="category">Choose a category</label>
+        <select name="category" ng-model="charity.category" required>
+          <option ng-repeat="category in categories">{{ category }}</option>
+        </select>
+        <label for="category" required>Choose a subCategory</label>
+        <select name="subCategory" ng-model="charity.subCategory">
+          <option ng-repeat="subCategory in subCategories">{{ subCategory }}</option>
+        </select>
       </fieldset>
 
       <div id="createAccount">
 
         <!-- create account submit button-->
-        <p>Click <strong>Create account</strong> to sign up today!</p>
-        <button type="submit" ng-disabled='registerForm.$invalid' class="btn btn-primary">Create account</button>
+        <p>Click <strong>Register</strong> to register your charity with Pledgr.</p><br/>
+        <button type="submit" ng-disabled='registerForm.$invalid' class="btn btn-primary">Register</button>
     </div>
     </form>
   </div>

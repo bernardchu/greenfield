@@ -1,7 +1,69 @@
 angular.module('pledgr.register', [])
 
 .controller('RegisterController', function($scope, $window, Categories) {
-  $scope.states = [];
+  Categories.getCategories()
+    .then(function(categories) {
+      $scope.categories = categories;
+    });
+
+  Categories.getSubCategories()
+    .then(function(subCategories) {
+      $scope.subCategories = subCategories;
+    });
+
+  $scope.stateAbbrevs = [
+    'AL',
+    'AK',
+    'AZ',
+    'AR',
+    'CA',
+    'CO',
+    'CT',
+    'DE',
+    'FL',
+    'GA',
+    'HI',
+    'ID',
+    'IL',
+    'IN',
+    'IA',
+    'KS',
+    'KY',
+    'LA',
+    'ME',
+    'MD',
+    'MA',
+    'MI',
+    'MN',
+    'MS',
+    'MO',
+    'MT',
+    'NE',
+    'NV',
+    'NH',
+    'NJ',
+    'NM',
+    'NY',
+    'NC',
+    'ND',
+    'OH',
+    'OK',
+    'OR',
+    'PA',
+    'RI',
+    'SC',
+    'SD',
+    'TN',
+    'TX',
+    'UT',
+    'VT',
+    'VA',
+    'WA',
+    'WV',
+    'WI',
+    'WY'
+  ];
+
   $scope.charity = {
     name: '',
     city: '',
@@ -16,6 +78,7 @@ angular.module('pledgr.register', [])
 
 
   $scope.register = function() {
+    console.log(this.charity);
     // Auth.signup($scope.user)
     // .then(function(token) {
     //     $window.localStorage.setItem('token', token);
