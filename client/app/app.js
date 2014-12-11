@@ -4,6 +4,7 @@ angular.module('pledgr', [
   'pledgr.home',
   'pledgr.signup',
   'pledgr.signin',
+  'pledgr.register',
   'ui.router'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
@@ -26,6 +27,11 @@ angular.module('pledgr', [
       templateUrl: 'app/signup/signup.html',
       controller: 'SignupController'
     })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'app/register/register.html',
+      controller: 'RegisterController'
+    })
     .state('charities', {
        url: '/charities/{c1:[0-9]+}/{c2:[0-9]+}/{c3:[0-9]+}',
        templateUrl: 'app/charities/charities.html',
@@ -33,4 +39,9 @@ angular.module('pledgr', [
     });
 
     // $httpProvider.interceptors.push('AttachTokens');
+}).controller('mainApp', function($scope, $state){
+
+  $scope.state = $state;
+
+
 });

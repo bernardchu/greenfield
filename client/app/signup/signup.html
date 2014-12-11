@@ -1,44 +1,44 @@
-<div id="container">
+<div id="signup-page" class="view-container">
   <div>
-    <h1>Create an account</h1>
+    <h2>Create an account</h2>
   </div>
   <div>
     <form name="signupForm" ng-submit="signup()" novalidate>
-      <div class="nameContainer">
+      <fieldset class="nameContainer form-section">
         <!-- firstname input form -->
         <label for="firstName">Name</label>
         <input type="text" name="firstName" ng-model="user.first" ng-minlength="2" ng-maxlength="15" required>
         <!-- firstname validation -->
-        <p ng-show="signupForm.firtname.$error.minlength">Name too short</p>
-        <p ng-show="signupForm.firtname.$error.maxlength">Name too long</p>
+        <span class="form-tip form-error" ng-show="signupForm.firtname.$error.minlength">Name too short</span>
+        <span class="form-tip form-error" ng-show="signupForm.firtname.$error.maxlength">Name too long</span>
         <!-- lastname input form -->
         <input type="text" name="lastName" ng-model="user.last" ng-minlength="2" ng-maxlength="15" required>
         <!-- lastname validation -->
-        <p ng-show="signupForm.lastName.$error.minlength">Name too short</p>
-        <p ng-show="signupForm.lastName.$error.maxlength">Name too long</p>
-      </div>
-      <div class="usrnameContainer">
+        <span class="form-tip form-error" ng-show="signupForm.lastName.$error.minlength">Name too short</span>
+        <span class="form-tip form-error" ng-show="signupForm.lastName.$error.maxlength">Name too long</span>
+      </fieldset>
+      <fieldset class="usrnameContainer form-section">
         <!-- username input form -->
         <label for="userName">User name</label>
         <input type="email" name="userName" ng-model="user.username" required>
         <!-- username validation -->
-        <p ng-show="signupForm.userName.$invalid && !signupForm.userName.$pristine">Enter a valid email</p>
-      </div>
-      <div class="pwdContainer">
+        <span class="form-tip form-error" ng-show="signupForm.userName.$invalid && !signupForm.userName.$pristine">Enter a valid email</span>
+      </fieldset>
+      <fieldset class="pwdContainer form-section">
         <!-- password input form -->
         <label for="password">Create password</label>
         <input type="password" name="password" ng-model="user.password" ng-minlength="6" required>
-        <p>6-character minimum; case sensitive</p>
+        <span class="form-tip">6-character minimum and case sensitive</span>
         <!-- password validation -->
-        <p ng-show="signupForm.password.$error.minlength">Password too short</p>
-      </div>
-      <div class="gender">
+        <span class="form-tip form-error" ng-show="signupForm.password.$error.minlength">Password too short</span>
+      </fieldset>
+      <fieldset class="gender form-section">
         <!-- gender input form -->
         <label for="gender">Gender</label>
         <input type="checkbox" name="gender" ng-model="user.male">Male<br>
         <input type="checkbox" name="gender" ng-model="user.female">Female<br>
-      </div>
-      <div class="preference">
+      </fieldset>
+      <fieldset class="preference form-section">
         <!-- user preferences input form -->
         <h3>Select your charity preferences </h3>
         <label for="preference">Categories</label>
@@ -51,45 +51,58 @@
         <input type="checkbox" name="preference" ng-model="user.international">International<br>
         <input type="checkbox" name="preference" ng-model="user.publicBenefit">Public Benefit<br>
         <input type="checkbox" name="preference" ng-model="user.religion">Religion<br>
-      </div>
-      <div>
+      </fieldset>
+      <fieldset class="form-section">
+
         <!-- local area preference -->
-        <label for="local">Local charity preference</label>
-        <input type="checkbox" name="local" ng-model="user.local"><br>
-      </div>
-      <div class="phoneContainer">
+      </fieldset>
+      <fieldset class="phoneContainer form-section">
         <!-- phone number input form -->
         <h3>Verify your phone number</h3>
         <p>Enter your number and we'll text you a verification code.</p>
         <label for="telephone">Telephone number</label>
         <input type="tel" name="telephone" ng-pattern="/^\(?\d{3}\)?\s?\d{3}\-?\d{4}$/" ng-model="user.phone" required>
         <!-- phone number validation -->
-        <p ng-show="signupForm.telephone.$error.pattern">Enter a valid telephone number</p>
+        <span class="form-tip form-error" ng-show="signupForm.telephone.$error.pattern">Enter a valid telephone number</span>
         <button type="button"ng-click="sendCode()" ng-disabled='signupForm.telephone.$invalid'>Send Code</button>
-      </div>
-      <div class="verifyContainer">
+      </fieldset>
+      <fieldset class="verifyContainer form-section">
         <!-- verification code input -->
-        <p>Please enter the verification code</p>
+        <span class="form-tip">Please enter the verification code</span>
         <label for="verify">Verificaiton Code</label>
         <input id="verify" type="text" name="verify" ng-model="user.code" required>
         <!-- verification code validation -->
-        <p ng-show="signupForm.verify.$invalid || signupForm.verify.$pristine">Enter verification code received via SMS</p>
+        <span class="form-tip form-error" ng-show="signupForm.verify.$invalid || signupForm.verify.$pristine">Enter verification code received via SMS</span>
         <button type="button"ng-click="verifyCode()" ng-disabled="signupForm.verify.$invalid">Verify Code</button>
-      </div>
-      <div>
+      </fieldset>
+      <fieldset class="form-section">
         <!-- user donation amount form -->
         <h3>Annual Pledge Amount</h3>
         <p>Please provide your annual pledge amount</p>
-        <labor for="pledge">Pledge Amount</label>
+        <label for="pledge">Pledge Amount</label>
+        <div class="nameContainer">
+          <!-- firstname input form -->
+          <label for="firstName">Name</label>
+          <input type="text" name="firstName" ng-model="user.first" ng-minlength="2" ng-maxlength="15" required>
+          <!-- firstname validation -->
+          <p ng-show="signupForm.firtname.$error.minlength">Name too short</p>
+          <p ng-show="signupForm.firtname.$error.maxlength">Name too long</p>
+          <!-- lastname input form -->
+          <input type="text" name="lastName" ng-model="user.last" ng-minlength="2" ng-maxlength="15" required>
+          <!-- lastname validation -->
+          <p ng-show="signupForm.lastName.$error.minlength">Name too short</p>
+          <p ng-show="signupForm.lastName.$error.maxlength">Name too long</p>
+        </div>
         <input type="number" ng-model="user.pledge" name="pledge" required>
-        <p>You have donated <span id="currency-default">{{user.pledge | currency }}</span>! </p>
-        <p ng-show="signupForm.pledge.$invalid || signupForm.pledge.$pristine">Please enter amount</p>
-      </div>
+        <span class="form-tip">You have donated <span id="currency-default">{{user.pledge | currency }}</span>! </p>
+        <span class="form-tip form-error" ng-show="signupForm.pledge.$invalid || signupForm.pledge.$pristine">Please enter amount</span>
+      </fieldset>
       <div id="createAccount">
+
         <!-- create account submit button-->
         <p>Click <strong>Create account</strong> to sign up today!</p>
-        <button type="submit" ng-disabled='signupForm.$invalid'>Create account</button>
-      </div>
+        <button type="submit" ng-disabled='signupForm.$invalid' class="btn btn-primary">Create account</button>
+    </div>
     </form>
   </div>
 </div>
