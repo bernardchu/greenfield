@@ -1,10 +1,31 @@
-angular.module('pledgr.signup', [])
+/*
+  test user
+  {
+    first:'Brian',
+    last:'Zindler',
+    username: 'zindlerb',
+    password: 'mango1234',
+    male: true,
+    female: false,
+    animals: false,
+    arts: false,
+    education: true,
+    environment: false,
+    health: false,
+    humanService: false,
+    international: false,
+    publicBenefit: false,
+    religion: false,
+    local: false,
+    phone: '6306391052',
+    code:'',
+    pledge: 0.01
+  }
 
-.controller('SignupController', function($scope, $window, Auth, SMS) {
   $scope.user = {
-    first:'First',
-    last:'Last',
-    username: 'username@example.com',
+    first:'',
+    last:'',
+    username: '',
     password: '',
     male: false,
     female: false,
@@ -18,17 +39,46 @@ angular.module('pledgr.signup', [])
     publicBenefit: false,
     religion: false,
     local: false,
-    phone: '(111)111-1111',
-    code:'test',
-    pledge: 100.00
+    phone: '',
+    code:'',
+    pledge: 0.00
   };
+*/
+
+angular.module('pledgr.signup', [])
+
+.controller('SignupController', function($scope, $window, Auth, SMS, $state) {
+  $scope.user =  {
+    first:'Brian',
+    last:'Zindler',
+    username: 'zindlerb@gmail.com',
+    password: 'mango1234',
+    male: true,
+    female: false,
+    animals: false,
+    arts: false,
+    education: true,
+    environment: false,
+    health: false,
+    humanService: false,
+    international: false,
+    publicBenefit: false,
+    religion: false,
+    local: false,
+    phone: '6306391052',
+    code:'',
+    pledge: 1
+  }
+
+  $scope.invalid = true;
 
   $scope.signup = function() {
     Auth.signup($scope.user)
-    // .then(function(token) {
-    //     $window.localStorage.setItem('token', token);
-    //     // $location.path('/userhome');
-    //   })
+    .then(function(token) {
+        $state.go('signin');
+        //$window.localStorage.setItem('token', token);
+        // $location.path('/userhome');
+      })
       .catch(function(error) {
         console.error(error);
       });
@@ -54,11 +104,11 @@ angular.module('pledgr.signup', [])
     })
     .then(function(found) {
       if (found) {
-        console.log('Code found');
+        $scope.invalid = false;
+        $('#verify').$invalid = false;
       } else {
-        console.log('Code not found');
         $('#verify').$invalid = true;
-
+        $scope.invalid = true;
       }
     });
   };

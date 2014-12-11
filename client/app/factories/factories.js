@@ -1,8 +1,7 @@
 angular.module('pledgr.factories', [])
 
-.factory('Auth', function($http) {
+.factory('Auth', function($http, $state) {
   var signup = function(data) {
-    console.log(data);
     return $http({
       method: 'POST',
       url: '/api/users/signup',
@@ -12,6 +11,20 @@ angular.module('pledgr.factories', [])
       return resp.data.token;
     });
   };
+
+  var checkToken = function(token) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/signedin',
+      data: {token: token}
+    })
+    .then(function(resp) {
+      if(resp.status === 200) {
+        $state.go('home');
+      }
+    });
+
+  }
 
   var signin = function(user) {
     return $http({
@@ -27,13 +40,13 @@ angular.module('pledgr.factories', [])
 
   return {
     signup: signup,
-    signin: signin
+    signin: signin,
+    checkToken: checkToken
   };
 })
 
 .factory('SMS', function($http) {
   var sendCode = function(data) {
-    console.log(data);
     return $http({
       method: 'POST',
       url: '/api/sms/send',
@@ -45,7 +58,6 @@ angular.module('pledgr.factories', [])
   };
 
   var verifyCode = function(data) {
-    console.log(data);
     return $http({
       method: 'POST',
       url: '/api/sms/verify',

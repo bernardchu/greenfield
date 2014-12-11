@@ -78,19 +78,8 @@ angular.module('pledgr.register', [])
 
 
   $scope.register = function() {
-    // console.log($scope.charity);
     Charities.register($scope.charity)
       .then(function(res) {
-        console.log(res);
       });
-
-    // Auth.signup($scope.user)
-    // .then(function(token) {
-    //     $window.localStorage.setItem('token', token);
-    //     // $location.path('/userhome');
-    //   })
-      // .catch(function(error) {
-        // console.error(error);
-      // });
   };
 });
