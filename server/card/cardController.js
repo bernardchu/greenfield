@@ -13,32 +13,29 @@ module.exports = {
   	    stripe.customers.create(
   	    	{
   	      	// card: stripeToken,
-  	      	description: 'someone@example.com'
+  	      	description: '12345@hackreactor.com'
   	    	}, 
   	    	function(err, customer) {
   	    		if(err) {
   	    			res.send('failed to create customer!');
   	    		}
-  	    		console.log("CUSTOMER = ", customer);
 	  				stripe.customers.createCard(customer.id, {card: stripeToken},
 	  				  function(err, card) {
 	  				  	if(err) {
 	  				  		console.log('ERROR', err);
 	  				  	}
 	  				    if(!err) {   	
-	  				    	console.log('CARD IS', card);
+	  				    	// console.log('CARD IS', card);
 				  	      return stripe.charges.create({
-				  	        amount: 1000,
+				  	        // amount: 50,
 				  	        currency: "usd",
 				  	        customer: customer.id
 				  	      }, 
 				  	      function(err, charge) {
-  	        	    	console.log('CHARGE IS', charge);
+  	        	    	// console.log('CHARGE IS', charge);
 
   	        	    	var card = new Card({user: req.body.user, customer_id: customer.id});
-  	        	    	console.log('CARD IS', card);
-  	            		card.save(function(error) {
-  	            			console.log("made it in here!!!");
+  	            		card.save(function(error, card) {
   	              		if (!error) {
   	              			res.send('SUCCESS');
   	              		}
