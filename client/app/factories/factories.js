@@ -1,5 +1,24 @@
 angular.module('pledgr.factories', [])
 
+.factory('Account', function($http) {
+  var getUserData = function(token) {
+    return $http({
+      method: 'GET',
+      url: '/api/users/account',
+      headers: {
+        'x-access-token': token
+      }
+    })
+    .then(function(data) {
+      return data
+    });
+  };
+
+  return {
+    getUserData: getUserData
+  }
+})
+
 .factory('Auth', function($http, $state) {
   var signup = function(data) {
     return $http({
@@ -20,10 +39,9 @@ angular.module('pledgr.factories', [])
     })
     .then(function(resp) {
       if(resp.status === 200) {
-        $state.go('home');
+        $state.go('account');
       }
     });
-
   };
 
   var signin = function(user) {
