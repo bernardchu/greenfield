@@ -72,33 +72,6 @@ angular.module('pledgr.signup', [])
 
   $scope.invalid = true;
 
-
-  $scope.form = {
-    selected : null,
-    fieldsets : null,
-    nextDisabled : false,
-    prevDisabled : true
-  }
-  
-  $scope.form.selected = angular.element(document.querySelector('#signup-form'));
-  $scope.form.fieldsets = $($scope.form.selected).find('fieldset');
-
-  $scope.formNext = function() {
-    var form =  angular.element(document.querySelector('#signup-form fieldset.active'));
-      angular.element(form).fadeOut('fast', function(){
-          console.log($(this).next('fieldset').length);
-          $(this).next('fieldset').fadeIn().addClass('active');
-      }).removeClass('active');
-  };
-
-  $scope.formPrev = function() {
-    var form =  angular.element(document.querySelector('#signup-form fieldset.active'));
-      angular.element(form).fadeOut('fast', function(){
-          $(this).prev('fieldset').fadeIn().addClass('active');
-      }).removeClass('active');
-  };
-
-
   $scope.signup = function() {
     Auth.signup($scope.user)
     .then(function(token) {
@@ -140,4 +113,3 @@ angular.module('pledgr.signup', [])
     });
   };
 });
-
