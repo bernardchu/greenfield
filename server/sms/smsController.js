@@ -3,6 +3,7 @@ var AuthCodeModel = require('./authCodeModel');
 var SmsModel = require('./sentMessagesModel');
 var UserModel = require('../users/userModel');
 var CharityModel = require('../charity/charityModel');
+var CardModel = require('../card/cardModel');
 
 var client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
 
@@ -40,6 +41,15 @@ module.exports = {
             var today = new Date();
             // Set the donation to the amount of the yearly pledge divided by the number of weeks remaining in the year
             var donationAmount = Math.round((data.pledge / (53 - weekNumber(today))) * 100) / 100;
+            // CardModel.findOne({user: data.username}, function(err, card) {
+            //   if(!err) {
+            //     stripe.charges.create({
+            //       amount: donationAmount, // amount in cents, again
+            //       currency: "usd",
+            //       customer: card.customer_id
+            //     });
+            //   }
+            // })
             // Create a new donation in the donations collection
             var donation = new SmsModel.Donations({
               phone: data.phone,
