@@ -47,11 +47,11 @@
 
 angular.module('pledgr.signup', [])
 
-.controller('SignupController', function($scope, $window, Auth, SMS) {
+.controller('SignupController', function($scope, $window, Auth, SMS, $state) {
   $scope.user =  {
     first:'Brian',
     last:'Zindler',
-    username: 'zindlerb',
+    username: 'zindlerb@gmail.com',
     password: 'mango1234',
     male: true,
     female: false,
@@ -67,17 +67,18 @@ angular.module('pledgr.signup', [])
     local: false,
     phone: '6306391052',
     code:'',
-    pledge: 0.01
+    pledge: 1
   }
 
   $scope.invalid = true;
 
   $scope.signup = function() {
     Auth.signup($scope.user)
-    // .then(function(token) {
-    //     $window.localStorage.setItem('token', token);
-    //     // $location.path('/userhome');
-    //   })
+    .then(function(token) {
+        $state.go('signin');
+        //$window.localStorage.setItem('token', token);
+        // $location.path('/userhome');
+      })
       .catch(function(error) {
         console.error(error);
       });
