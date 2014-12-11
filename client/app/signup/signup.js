@@ -104,11 +104,9 @@ angular.module('pledgr.signup', [])
     })
     .then(function(found) {
       if (found) {
-        console.log('Code found');
         $scope.invalid = false;
         $('#verify').$invalid = false;
       } else {
-        console.log('Code not found');
         $('#verify').$invalid = true;
         $scope.invalid = true;
       }
