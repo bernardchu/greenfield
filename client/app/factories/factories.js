@@ -131,7 +131,18 @@ angular.module('pledgr.factories', [])
     });
   };
 
+  var getUnvetted = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/charity/unvetted'
+    })
+    .then(function(resp) {
+      return resp.data;
+    });
+  };
+
   return {
-    register: register
+    register: register,
+    getUnvetted: getUnvetted
   };
 });
