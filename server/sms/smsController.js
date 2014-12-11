@@ -56,38 +56,38 @@ module.exports = {
               }
               // else charge the card
               stripe.charges.create({
-                amount: donationAmount, // amount in cents, again
+                amount: donationAmount * 100, // amount in cents
                 currency: "usd",
                 customer: cardData.customer_id
               }, function(err, charge) {
                 console.log('New charge: ', charge);
+                // Create a new donation in the donations collection
+                var donation = new SmsModel.Donations({
+                  phone: data.phone,
+                  charity: chosenCharityId,
+                  amount: donationAmount
+                });
+                // Save the donation to the collection
+                donation.save(function(err) {
+                  if (err) { throw err; }
+                  else {
+                    chosenCharityId = parseInt(chosenCharityId);
+                    CharityModel.findOne({ orgid: chosenCharityId }, function(err, data) {
+                      client.sendMessage({
+                        to: '+1' + userPhone,
+                        from: fromPhone,
+                        body: 'Thank you for your donation of $' + donationAmount + ' to ' + data.name + '.'
+                      }, function(err) {
+                        if (err) {
+                          console.log(err);
+                        }
+                        res.status(204).send();
+                      });
+                    });
+                  }
+                });
               });
             });
-            // Create a new donation in the donations collection
-            var donation = new SmsModel.Donations({
-              phone: data.phone,
-              charity: chosenCharityId,
-              amount: donationAmount
-            });
-            // Save the donation to the collection
-            donation.save(function(err) {
-              if (err) { throw err; }
-              else {
-                chosenCharityId = parseInt(chosenCharityId);
-                CharityModel.findOne({ orgid: chosenCharityId }, function(err, data) {
-                  client.sendMessage({
-                    to: '+1' + userPhone,
-                    from: fromPhone,
-                    body: 'Thank you for your donation of $' + donationAmount + ' to ' + data.name + '.'
-                  }, function(err) {
-                    if (err) {
-                      console.log(err);
-                    }
-                  });
-                });
-              }
-            });
-            res.status(204).send();
           });
         } else {
           res.status(500).send();
