@@ -82,7 +82,6 @@ module.exports = {
     // grab the token in the header is any
     // then decode the token, which we end up being the user object
     // check to see if that user exists in the database
-    console.log('here');
     var token = req.body.token;
     if (!token) {
       next(new Error('No token'));
@@ -98,7 +97,7 @@ module.exports = {
           }
         })
         .fail(function (error) {
-          console.log('fail')
+          console.log(error)
           next(error);
         });
     }
