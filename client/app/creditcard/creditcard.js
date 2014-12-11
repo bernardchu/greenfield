@@ -10,11 +10,15 @@ angular.module('pledgr.creditcard', [])
     expmonth: "",
     expyear: ""
   };
+  
   $scope.addCard = function() {
      var $form = $('#payment-form');
+
      Stripe.card.createToken($form, 
         function (status, response) {
           if (response.error) {
+            // $form.find('.payment-errors').text(response.error.message);
+            // $form.find('button').prop('disabled', false);
 
           } else {
             // response contains id and card, which contains additional card details

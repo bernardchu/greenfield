@@ -4,7 +4,6 @@
 	    <label>
 	      <span>Card Number:</span>
 	      <input type="text" size="20" data-stripe="number" ng-model="formData.number"/>
-	    </label>
 	  </div>
 
 	  <div class="form-row">
@@ -29,4 +28,5 @@
 	<ul ng-repeat="card in cards"> 
 		<li> {{card.number}} - - - - - - - - {{card.exp}} </li>
 	</ul>
+	</form>
 </div>
