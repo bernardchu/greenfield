@@ -1,17 +1,11 @@
+Stripe.setPublishableKey("pk_test_d4qfvAGCTfij33GxuvYkZKUl");
 
 angular.module('pledgr.creditcard', [])
 
 .controller('CreditCardController', function($scope, $http) {
-  Stripe.setPublishableKey("pk_test_d4qfvAGCTfij33GxuvYkZKUl");
-  $scope.cards = [];
-  $scope.formData = {
-    number: "",
-    cvc: "",
-    expmonth: "",
-    expyear: ""
-  };
   $scope.addCard = function() {
      var $form = $('#payment-form');
+
      Stripe.card.createToken($form, 
         function (status, response) {
           if (response.error) {
@@ -22,14 +16,11 @@ angular.module('pledgr.creditcard', [])
             $http({
               url: '/card/add',
               method: "POST",
-              data: {user: 'jsakdfj@hackreactor.com', stripeToken: token},
+              data: {user: 'someone@example.com', stripeToken: token},
               headers: {'Content-Type': 'application/json'}
             })
-            .then(function (res) {
-                if(res.data === "SUCCESS") {
-                  $scope.cards.push({number: 'Card ending in ' + $scope.formData.number.slice(-4), exp: $scope.formData.expmonth 
-                    + '/' + $scope.formData.expyear});
-                }
+            .then(function (data) {
+                console.log("SUCCESS!");
             });
 
             $form.get(0).reset();
