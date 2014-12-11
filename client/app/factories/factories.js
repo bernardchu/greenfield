@@ -33,14 +33,14 @@ angular.module('pledgr.factories', [])
 
   var checkToken = function(token) {
     return $http({
-      method: 'POST',
+      method: 'GET',
       url: '/api/users/signedin',
-      data: {token: token}
+      headers: {
+        'x-access-token': token
+      }
     })
     .then(function(resp) {
-      if(resp.status === 200) {
-        $state.go('account');
-      }
+      return resp.status;
     });
   };
 
