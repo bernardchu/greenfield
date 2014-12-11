@@ -59,6 +59,16 @@ module.exports = {
     Charity.find().distinct('subCategory', function(err, subCategories) {
       res.json(subCategories);
     })
+  },
+
+  sendUnvetted: function(req, res) {
+    Charity.find({ vetted: true }).exec(function(err, charities) {
+      if (charities) {
+        res.json(charities);
+      } else {
+        res.send('All charities vetted.');
+      }
+    })
   }
 
 };
