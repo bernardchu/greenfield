@@ -19,7 +19,7 @@
       </fieldset>
       <fieldset class="usrnameContainer form-section">
         <!-- username input form -->
-        <label for="userName">User name</label>
+        <label for="userName">Email Address</label>
         <input type="email" name="userName" ng-model="user.username" required>
         <!-- username validation -->
         <span class="form-tip form-error" ng-show="signupForm.userName.$invalid && !signupForm.userName.$pristine">Enter a valid email</span>
@@ -99,9 +99,10 @@
       </fieldset>
       <div id="createAccount">
 
-        <!-- create account submit button-->
+        <!-- create account submit button  Need to add a signup for invalid-->
+        <!-- Set up a you already have an account? should not redirect on an invalid. -->
         <p>Click <strong>Create account</strong> to sign up today!</p>
-        <button type="submit" ng-disabled='signupForm.$invalid' class="btn btn-primary">Create account</button>
+        <button type="submit" ng-if='!signupForm.$invalid'  class="btn btn-primary">Create account</button>
     </div>
     </form>
   </div>

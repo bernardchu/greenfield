@@ -10,6 +10,7 @@ var app = express();
 
 var mongoURI = process.env.MONGO_URI || 'mongodb://localhost/pledgr'; //process.env.MONGO_URI || 
 
+
 mongoose.connect(mongoURI);
 
 require('./config/middleware')(app, express);

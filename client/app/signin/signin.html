@@ -11,5 +11,6 @@
     <p ng-show="signinForm.username.$invalid">Please enter your password.</p>
     <button ng-disabled="signinForm.$invalid">Sign in</button>
   </form>
+  <p ng-show="rejected">The username or password is incorrect.</p>
   <a ui-sref="signup">Don't have an account? <strong>Signup Today!</strong></a>
 </div>
