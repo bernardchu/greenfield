@@ -71,6 +71,16 @@ module.exports = {
 
 
     res.send(aTag);
+  },
+
+  sendUnvetted: function(req, res) {
+    Charity.find({ vetted: true }).exec(function(err, charities) {
+      if (charities) {
+        res.json(charities);
+      } else {
+        res.send('All charities vetted.');
+      }
+    })
   }
 
 };
