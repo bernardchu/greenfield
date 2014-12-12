@@ -52,13 +52,13 @@ module.exports = {
   sendCategories: function(req, res) {
     Charity.find().distinct('category', function(err, categories) {
       res.json(categories);
-    })
+    });
   },
 
   sendSubCategories: function(req, res) {
     Charity.find().distinct('subCategory', function(err, subCategories) {
       res.json(subCategories);
-    })
+    });
   },
 
   badge: function(req, res){
@@ -80,7 +80,24 @@ module.exports = {
       } else {
         res.send('All charities vetted.');
       }
-    })
+    });
+  },
+
+  vet: function(req, res) {
+    Charity.update({ name: req.body.name},{vetted: true}).exec(function(err, numAffected, raw) {
+      console.log('after update raw response', raw);
+      console.log('numaffected',numAffected);
+      // if (found) {
+      //   // update vetted to true, respond with send().
+      //   console.log('found ', found);
+      //   found.update({},{ vetted: true });
+      //   console.log('updated to ', found);
+
+        res.send();
+      // } else {
+      //   res.send(404);
+      // }
+    });
   }
 
 };

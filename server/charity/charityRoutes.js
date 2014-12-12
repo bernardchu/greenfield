@@ -6,5 +6,6 @@ module.exports = function(app) {
   app.get('/unvetted', charityController.sendUnvetted);
   app.post('/', charityController.register);
   app.get('/badge/:orgid', charityController.badge);
+  app.put('/', charityController.vet);
   app.get('/:orgid', charityController.fetch);
 };

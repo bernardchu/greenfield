@@ -21,11 +21,16 @@
       float:right;
       margin: 0 10px;
     }
+
+    .unvet-button {
+      float:right;
+    }
   </style>
 
   <ul>
     <li class="unvetted" ng-repeat="charity in charities">
       <h3 class="unvet-name">{{ charity.name }}</h3>
+      <button class="unvet-button" ng-click="vet(charity)">Vet</button>
       <span class="unvet-phone"><a href="tel:{{ charity.phoneNum }}">{{ charity.phone }}</a></span>
       <span class="unvet-email"><a href="mailto:{{ charity.email }}">{{ charity.email }}</a></span>
     </li>
