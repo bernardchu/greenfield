@@ -35,5 +35,3 @@ client/bower_components/
 
 # Webstorm
 .idea/
-
-server.js
