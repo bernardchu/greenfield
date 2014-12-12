@@ -74,7 +74,7 @@ module.exports = {
   },
 
   sendUnvetted: function(req, res) {
-    Charity.find({ vetted: true }).exec(function(err, charities) {
+    Charity.find({ vetted: false }).exec(function(err, charities) {
       if (charities) {
         res.json(charities);
       } else {
