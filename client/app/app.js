@@ -43,6 +43,7 @@ angular.module('pledgr', [
        url: '/manageCards',
        templateUrl: 'app/creditcard/creditcard.html',
        controller: 'CreditCardController'
+    })
     .state('account', {
        url: '/account',
        templateUrl: 'app/account/account.html',
