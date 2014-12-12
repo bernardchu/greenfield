@@ -24,7 +24,7 @@ angular.module('pledgr.factories', [])
       }
     });
 
-  }
+  };
 
   var signin = function(user) {
     return $http({
@@ -98,7 +98,7 @@ angular.module('pledgr.factories', [])
   return {
     getCategories: getCategories,
     getSubCategories: getSubCategories
-  }
+  };
 })
 
 .factory('Charities', function($http) {
