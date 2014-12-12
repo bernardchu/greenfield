@@ -3,12 +3,8 @@ var AuthCodeModel = require('./authCodeModel');
 var SmsModel = require('./sentMessagesModel');
 var UserModel = require('../users/userModel');
 var CharityModel = require('../charity/charityModel');
-<<<<<<< HEAD
-var CardModel = require('../card/cardModel');
-=======
 var stripe = require('stripe')("sk_test_WjBhk0wLLvaJp3bO65bozL53");
 var CardModel = require('../card/cardModel.js')
->>>>>>> Begin modifying SMS controller to charge card upon user response to SMS.
 
 var client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
 
