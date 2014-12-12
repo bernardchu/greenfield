@@ -21,7 +21,6 @@
     code:'',
     pledge: 0.01
   }
-
   $scope.user = {
     first:'',
     last:'',
@@ -71,6 +70,38 @@ angular.module('pledgr.signup', [])
   }
 
   $scope.invalid = true;
+
+
+  $scope.form = {
+    selected : null,
+    fieldsets : null,
+    currentFieldset : 0
+  }
+  
+  $scope.form.selected = angular.element(document.querySelector('#signup-form'));
+  $scope.form.fieldsets = $($scope.form.selected).find('fieldset');
+
+  $scope.formNext = function() {
+    var form = $($scope.form.selected).find('fieldset.active');
+    if($(form).next('fieldset').length > 0){
+      $scope.form.currentFieldset ++;
+      angular.element(form).fadeOut('fast', function(){
+        $(this).next('fieldset').fadeIn().addClass('active');
+      }).removeClass('active');
+    }
+    console.log($scope.form.currentFieldset);
+  };
+
+  $scope.formPrev = function() {
+    var form = $($scope.form.selected).find('fieldset.active');
+    if($(form).prev('fieldset').length > 0){
+      $scope.form.currentFieldset --;
+      angular.element(form).fadeOut('fast', function(){
+        $(this).prev('fieldset').fadeIn().addClass('active');
+      }).removeClass('active');
+    }
+  };
+
 
   $scope.signup = function() {
     Auth.signup($scope.user)
