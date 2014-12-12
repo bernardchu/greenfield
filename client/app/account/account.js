@@ -6,33 +6,11 @@ angular.module('pledgr.account', [])
 
   Account.getUserData(token)
     .then(function(userData) {
-      console.log(userData);
+      $scope.user = userData.data;
     })
 
-  $scope.user =  {
-    first:'Brian',
-    last:'Zindler',
-    username: 'zindlerb@gmail.com',
-    password: 'mango1234',
-    male: true,
-    female: false,
-    animals: false,
-    arts: false,
-    education: true,
-    environment: false,
-    health: false,
-    humanService: false,
-    international: false,
-    publicBenefit: false,
-    religion: false,
-    local: false,
-    phone: '6306391052',
-    code:'',
-    pledge: 1
-  }
-
   $scope.submit = function(){
-    
+    console.log('submitted');
   }
 
   //Feed user data into scope.
