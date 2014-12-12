@@ -2,8 +2,33 @@
   <div>
     <h2>Unvetted Charities</h2>
   </div>
+
+  <style>
+    .unvetted {
+      border: 1px solid #c4c6c6;
+      margin: 0 0 20px 0;
+      padding: 15px;
+      border-radius: 4px;
+    }
+
+    .unvet-name {
+      margin: 5px;
+      font-size:1.2em;
+      display:inline;
+    }
+
+    .unvet-phone, .unvet-email {
+      float:right;
+      margin: 0 10px;
+    }
+  </style>
+
   <ul>
-    <li ng-repeat="charity in charities">{{ charity.name }}</li>
+    <li class="unvetted" ng-repeat="charity in charities">
+      <h3 class="unvet-name">{{ charity.name }}</h3>
+      <span class="unvet-phone"><a href="tel:{{ charity.phoneNum }}">{{ charity.phone }}</a></span>
+      <span class="unvet-email"><a href="mailto:{{ charity.email }}">{{ charity.email }}</a></span>
+    </li>
   <ul>
 
 </div>
