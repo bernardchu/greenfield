@@ -123,8 +123,21 @@ angular.module('pledgr.factories', [])
     });
   };
 
+  var vet = function(charity) {
+    return $http({
+      method: 'PUT',
+      url: '/api/charity',
+      data: charity
+    })
+    .then(function(resp) {
+      console.log(resp.data);
+      return resp.data;
+    });
+  };
+
   return {
     register: register,
-    getUnvetted: getUnvetted
+    getUnvetted: getUnvetted,
+    vet: vet
   };
 });

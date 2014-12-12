@@ -5,5 +5,6 @@ module.exports = function(app) {
   app.get('/subCategory', charityController.sendSubCategories);
   app.get('/unvetted', charityController.sendUnvetted);
   app.post('/', charityController.register);
+  app.put('/', charityController.vet);
   app.get('/:orgid', charityController.fetch);
 };
