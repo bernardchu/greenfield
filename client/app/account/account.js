@@ -31,6 +31,10 @@ angular.module('pledgr.account', [])
     pledge: 1
   }
 
+  $scope.submit = function(){
+    
+  }
+
   //Feed user data into scope.
   //on change do a put request on the server.
 
