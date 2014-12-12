@@ -7,14 +7,21 @@ angular.module('pledgr.signin', [])
     username: '',
     password: ''
   };
-  //Add auto signin on remember.
+
+  Auth.checkToken(token)
+    .then(function(status){
+      if(status === 200) {
+        $state.go('account');
+      }
+    });
+
   $scope.rejected = false;
   $scope.signin = function() {
     var that = this;
     Auth.signin($scope.user)
       .then(function(tokenObj) {
         $window.localStorage.setItem('token', tokenObj.token);
-        //$state.go('home');
+        $state.go('account');
         //$location.path('/userhome');
       })
       .catch(function(error) {

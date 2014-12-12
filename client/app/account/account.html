@@ -1,1 +1,95 @@
-account.html
+<div id="signup-page" class="view-container">
+  <div>
+    <h2>Account Settings</h2>
+  </div>
+  <div>
+    <form name="signupForm" ng-submit="submit()" novalidate>
+      <fieldset class="nameContainer form-section">
+        <!-- firstname input form -->
+        <label for="firstName">Name</label>
+        <input type="text" name="firstName" ng-model="user.first" ng-minlength="2" ng-maxlength="15" required>
+        <!-- firstname validation -->
+        <span class="form-tip form-error" ng-show="signupForm.firtname.$error.minlength">Name too short</span>
+        <span class="form-tip form-error" ng-show="signupForm.firtname.$error.maxlength">Name too long</span>
+        <!-- lastname input form -->
+        <input type="text" name="lastName" ng-model="user.last" ng-minlength="2" ng-maxlength="15" required>
+        <!-- lastname validation -->
+        <span class="form-tip form-error" ng-show="signupForm.lastName.$error.minlength">Name too short</span>
+        <span class="form-tip form-error" ng-show="signupForm.lastName.$error.maxlength">Name too long</span>
+      </fieldset>
+      <fieldset class="usrnameContainer form-section">
+        <!-- username input form -->
+        <label for="userName">Email Address</label>
+        <input type="email" name="userName" ng-model="user.username" required>
+        <!-- username validation -->
+        <span class="form-tip form-error" ng-show="signupForm.userName.$invalid && !signupForm.userName.$pristine">Enter a valid email</span>
+      </fieldset>
+      <fieldset class="pwdContainer form-section">
+        <!-- password input form -->
+        <label for="password">Create password</label>
+        <input type="password" name="password" ng-model="user.password" ng-minlength="6" required>
+        <span class="form-tip">6-character minimum and case sensitive</span>
+        <!-- password validation -->
+        <span class="form-tip form-error" ng-show="signupForm.password.$error.minlength">Password too short</span>
+      </fieldset>
+      <fieldset class="gender form-section">
+        <!-- gender input form -->
+        <label for="gender">Gender</label>
+        <input type="checkbox" name="gender" ng-model="user.male">Male<br>
+        <input type="checkbox" name="gender" ng-model="user.female">Female<br>
+      </fieldset>
+      <fieldset class="preference form-section">
+        <!-- user preferences input form -->
+        <h3>Select your charity preferences </h3>
+        <label for="preference">Categories</label>
+        <input type="checkbox" name="preference" ng-model="user.animals">Animals<br>
+        <input type="checkbox" name="preference" ng-model="user.arts">Arts, Culture, Humanities<br>
+        <input type="checkbox" name="preference" ng-model="user.education">Education<br>
+        <input type="checkbox" name="preference" ng-model="user.environment">Environment<br>
+        <input type="checkbox" name="preference" ng-model="user.health">Health<br>
+        <input type="checkbox" name="preference" ng-model="user.humanService">Human Services<br>
+        <input type="checkbox" name="preference" ng-model="user.international">International<br>
+        <input type="checkbox" name="preference" ng-model="user.publicBenefit">Public Benefit<br>
+        <input type="checkbox" name="preference" ng-model="user.religion">Religion<br>
+      </fieldset>
+      <fieldset class="form-section">
+
+        <!-- local area preference -->
+      </fieldset>
+      <fieldset class="phoneContainer form-section">
+        <!-- phone number input form -->
+        <h3>Change Telephone Number</h3>
+        <p>Enter your new number and we'll text you a verification code.</p>
+        <label for="telephone">Telephone number</label>
+        <input type="tel" name="telephone" ng-pattern="/^\(?\d{3}\)?\s?\d{3}\-?\d{4}$/" ng-model="user.phone" required>
+        <!-- phone number validation -->
+        <span class="form-tip form-error" ng-show="signupForm.telephone.$error.pattern">Enter a valid telephone number</span>
+        <button type="button"ng-click="sendCode()" ng-disabled='signupForm.telephone.$invalid'>Send Code</button>
+      </fieldset>
+      <fieldset class="verifyContainer form-section">
+        <!-- verification code input -->
+        <span class="form-tip">Please enter the verification code</span>
+        <label for="verify">Verificaiton Code</label>
+        <input id="verify" type="text" name="verify" ng-model="user.code" required>
+        <!-- verification code validation -->
+        <span class="form-tip form-error" ng-show="signupForm.verify.$invalid || signupForm.verify.$pristine">Enter verification code received via SMS</span>
+        <button type="button"ng-click="verifyCode()" ng-disabled="signupForm.verify.$invalid">Verify Code</button>
+      </fieldset>
+      <fieldset class="form-section">
+        <!-- user donation amount form -->
+        <h3>Annual Pledge Amount</h3>
+        <p>Please provide your annual pledge amount</p>
+        <label for="pledge">Pledge Amount</label>
+        <input type="number" ng-model="user.pledge" name="pledge" required>
+        <span class="form-tip">You are donating <span id="currency-default">{{user.pledge | currency }}</span>a year! </p>
+        <span class="form-tip form-error" ng-show="signupForm.pledge.$invalid || signupForm.pledge.$pristine">Please enter amount</span>
+      </fieldset>
+      <div id="createAccount">
+
+        <!-- create account submit button  Need to add a signup for invalid-->
+        <!-- Set up a you already have an account? should not redirect on an invalid. -->
+        <button type="submit" ng-if='!signupForm.$invalid'  class="btn btn-primary">Save</button>
+    </div>
+    </form>
+  </div>
+</div>
